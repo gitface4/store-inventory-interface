@@ -6,7 +6,7 @@ function LowStock({ updates }) {
     const { minimumInventory } = useContext(InventoryAlertContext);
 
     return (
-        <Card className="dashboard-cards">
+        <Card className="dashboard-cards mb-5">
             <Card.Header>Low Stock</Card.Header>
             <Card.Body>
                 <Table>

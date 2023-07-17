@@ -4,7 +4,7 @@ import LowStock from './LowStock';
 import useInventoryUpdates from '../hooks/useInventoryUpdates';
 import {Col, Row} from "react-bootstrap";
 
-function Dashboard() {
+export default function Dashboard() {
     const updates = useInventoryUpdates();
 
     return (
@@ -15,13 +15,9 @@ function Dashboard() {
             <Row>
                 <Col xs={8}>
                     <LowStock updates={updates} />
-                </Col>
-                <Col>
                     <LastSales updates={updates} />
                 </Col>
             </Row>
         </div>
     );
 }
-
-export default Dashboard;

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Row} from "react-bootstrap";
 
-function Models() {
+export default function Models() {
     return (
         <div>
             <Row className="py-5">
@@ -10,5 +10,3 @@ function Models() {
         </div>
     )
 }
-
-export default Models;

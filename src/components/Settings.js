@@ -2,7 +2,7 @@ import React from 'react'
 import {Col, Row} from "react-bootstrap";
 import InventoryAlertTreshold from "./InventoryAlertTreshold";
 
-function Settings() {
+export default function Settings() {
     return (
         <div>
             <Row className="py-5">
@@ -16,5 +16,3 @@ function Settings() {
         </div>
     )
 }
-
-export default Settings;
