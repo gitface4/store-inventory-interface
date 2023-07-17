@@ -2,9 +2,10 @@ import React from 'react'
 import {Col, Row} from "react-bootstrap";
 import useInventoryUpdates from "../hooks/useInventoryUpdates";
 import StoreInventory from "./StoreInventory";
+import {useInventory} from "../provider/InventoryContextProvider";
 
 export default function Stores() {
-    const updates = useInventoryUpdates();
+    const { inventoryUpdates } = useInventory();
 
     return (
         <div>
@@ -13,7 +14,7 @@ export default function Stores() {
             </Row>
             <Row>
                 <Col xs={8}>
-                    <StoreInventory updates={updates} />
+                    <StoreInventory updates={inventoryUpdates} />
                 </Col>
             </Row>
         </div>

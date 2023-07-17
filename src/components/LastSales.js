@@ -4,7 +4,7 @@ import {Badge, Card, Table} from "react-bootstrap";
 function LastSales({ updates }) {
     return (
         <Card className="dashboard-cards mb-4">
-            <Card.Header>Last Sales</Card.Header>
+            <Card.Header>Last 10 Sales</Card.Header>
             <Card.Body>
                 <Table>
                     <thead>

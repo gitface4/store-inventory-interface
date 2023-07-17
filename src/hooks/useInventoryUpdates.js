@@ -1,10 +1,38 @@
-import {useContext, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
+import useMinimumInventory from "./useMinimumInventory";
 import {toast} from "react-toastify";
-import {InventoryAlertContext} from "../context/InventoryAlertContext";
+
 
 function useInventoryUpdates() {
     const [updates, setUpdates] = useState([]);
-    const { minimumInventory } = useContext(InventoryAlertContext);
+    const [minimumInventory] = useMinimumInventory();
+
+    const inventoryAlert = (inventoryUpdate) => {
+        if (inventoryUpdate.inventory <= minimumInventory && inventoryUpdate.inventory > 0) {
+            toast.warning(
+                <div>
+                    <div className="toast-header">Low Stock Alert</div>
+                    <div className="toast-body">
+                        The model <strong>{inventoryUpdate.model}</strong> only
+                        has <strong>{inventoryUpdate.inventory}</strong> left
+                        in stock at <strong>{inventoryUpdate.store}</strong>.
+                    </div>
+                </div>,
+            );
+        }
+
+        if (inventoryUpdate.inventory === 0) {
+            toast.error(
+                <div>
+                    <div className="toast-header">No Stock Left</div>
+                    <div className="toast-body">
+                        The model <strong>{inventoryUpdate.model}</strong> has
+                        no stock left at <strong>{inventoryUpdate.store}</strong>.
+                    </div>
+                </div>,
+            );
+        }
+    }
 
     useEffect(() => {
         const ws = new WebSocket('ws://localhost:8080/');
@@ -31,30 +59,7 @@ function useInventoryUpdates() {
                 }
             });
 
-            if (inventoryUpdate.inventory <= minimumInventory && inventoryUpdate.inventory > 0) {
-                toast.warning(
-                    <div>
-                        <div className="toast-header">Low Stock Alert</div>
-                        <div className="toast-body">
-                            The model <strong>{inventoryUpdate.model}</strong> only
-                            has <strong>{inventoryUpdate.inventory}</strong> left
-                            in stock at <strong>{inventoryUpdate.store}</strong>.
-                        </div>
-                    </div>,
-                );
-            }
-
-            if (inventoryUpdate.inventory === 0) {
-                toast.error(
-                    <div>
-                        <div className="toast-header">No Stock Left</div>
-                        <div className="toast-body">
-                            The model <strong>{inventoryUpdate.model}</strong> has
-                            no stock left at <strong>{inventoryUpdate.store}</strong>.
-                        </div>
-                    </div>,
-                );
-            }
+            inventoryAlert(inventoryUpdate);
         };
 
         return () => ws.close();

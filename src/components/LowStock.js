@@ -1,9 +1,9 @@
-import {Badge, Button, Card, Table} from "react-bootstrap";
-import React, {useContext} from "react";
-import {InventoryAlertContext} from "../context/InventoryAlertContext";
+import {Badge, Card, Table} from "react-bootstrap";
+import React from "react";
+import useMinimumInventory from "../hooks/useMinimumInventory";
 
 function LowStock({ updates }) {
-    const { minimumInventory } = useContext(InventoryAlertContext);
+    const [minimumInventory] = useMinimumInventory()
 
     return (
         <Card className="dashboard-cards mb-5">

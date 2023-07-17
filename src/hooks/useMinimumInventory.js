@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-function useMinimumInventory() {
-    const [minimumInventory, setMinimumInventory] = useState(10);
+export default function useMinimumInventory() {
+    const [minimumInventory, setMinimumInventory] = useState(
+        () => Number(localStorage.getItem('minimumInventory')) || 5
+    );
 
-    return { minimumInventory, setMinimumInventory };
+    useEffect(() => {
+        localStorage.setItem('minimumInventory', minimumInventory);
+    }, [minimumInventory]);
+
+    return [minimumInventory, setMinimumInventory];
 }
-
-export default useMinimumInventory;

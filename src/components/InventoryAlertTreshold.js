@@ -1,12 +1,12 @@
-import React, {useContext} from 'react';
-import {InventoryAlertContext} from "../context/InventoryAlertContext";
-import {Card} from "react-bootstrap";
+import React from 'react';
+import { Card } from "react-bootstrap";
+import useMinimumInventory from '../hooks/useMinimumInventory';
 
 function InventoryAlertThreshold() {
-    const { minimumInventory, setMinimumInventory } = useContext(InventoryAlertContext);
+    const [minimumInventory, setMinimumInventory] = useMinimumInventory();
 
     const handleChange = (event) => {
-        setMinimumInventory(event.target.value);
+        setMinimumInventory(Number(event.target.value));
     };
 
     return (
