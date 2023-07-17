@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.scss';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import SideMenu from './components/SideMenu';
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import Dashboard from "./components/Dashboard";
+import Settings from "./components/Settings";
+import {Col, Container, Row} from "react-bootstrap";
+import InventoryAlertProvider from "./provider/InventoryAlertContextProvider";
+import Stores from "./components/Stores";
+import Models from "./components/Models";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+        <Router>
+            <Container fluid>
+                <Row>
+                    <Col xs={1} className="ps-0">
+                        <SideMenu />
+                    </Col>
+                    <Col>
+                      <InventoryAlertProvider>
+                          <Routes>
+                              <Route path="/" element={<Dashboard />} />
+                              <Route path="/stores" element={<Stores />} />
+                              <Route path="/models" element={<Models />} />
+                              <Route path="/settings" element={<Settings />} />
+                          </Routes>
+                      </InventoryAlertProvider>
+                    </Col>
+                </Row>
+            </Container>
+        </Router>
+
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+    </>
   );
 }
 
