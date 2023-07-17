@@ -1,8 +1,8 @@
 import React from 'react'
 import {Col, Row} from "react-bootstrap";
-import useInventoryUpdates from "../hooks/useInventoryUpdates";
+import useInventoryUpdates from "../../hooks/useInventoryUpdates";
 import StoreInventory from "./StoreInventory";
-import {useInventory} from "../provider/InventoryContextProvider";
+import {useInventory} from "../../provider/InventoryContextProvider";
 
 export default function Stores() {
     const { inventoryUpdates } = useInventory();

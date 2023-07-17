@@ -58,3 +58,10 @@ th, td {
         height: 50px;
     }
 }
+
+// Danger badge
+.badge, .bg-danger {
+    background-color: white !important;
+    border: 2px solid red;
+    color: red;
+}

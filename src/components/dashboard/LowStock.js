@@ -1,6 +1,6 @@
 import {Badge, Card, Table} from "react-bootstrap";
 import React from "react";
-import useMinimumInventory from "../hooks/useMinimumInventory";
+import useMinimumInventory from "../../hooks/useMinimumInventory";
 
 function LowStock({ updates }) {
     const [minimumInventory] = useMinimumInventory()
@@ -19,7 +19,7 @@ function LowStock({ updates }) {
                     </tr>
                     </thead>
                     <tbody>
-                        {updates.filter(update => update.inventory < minimumInventory).map((update, index) => (
+                        {updates.filter(update => update.inventory < minimumInventory).sort((a, b) => a.inventory - b.inventory).map((update, index) => (
                             <tr key={index}>
                                 <td className="td-fixed-width-md">{update.store}</td>
                                 <td className="td-fixed-width-sm">{update.model}</td>

@@ -1,5 +1,5 @@
 import {Container, Row, Col} from "react-bootstrap";
-import SideMenu from "./components/SideMenu";
+import SideMenu from "./components/layout/SideMenu";
 import React from "react";
 import {ToastContainer} from "react-toastify";
 

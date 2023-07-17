@@ -15,7 +15,7 @@ function LastSales({ updates }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {updates.slice(-10).map((update, index) => (
+                        {updates.slice(-10).reverse().map((update, index) => (
                             <tr key={index}>
                                 <td className="td-fixed-width-md">{update.store}</td>
                                 <td className="td-fixed-width-sm">{update.model}</td>

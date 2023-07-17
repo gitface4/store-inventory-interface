@@ -1,9 +1,8 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import LastSales from './LastSales';
 import LowStock from './LowStock';
-import useInventoryUpdates from '../hooks/useInventoryUpdates';
 import {Col, Row} from "react-bootstrap";
-import {useInventory} from "../provider/InventoryContextProvider";
+import {useInventory} from "../../provider/InventoryContextProvider";
 
 export default function Dashboard() {
     const { inventoryUpdates } = useInventory();

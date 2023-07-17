@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from "react-bootstrap";
-import useMinimumInventory from '../hooks/useMinimumInventory';
+import useMinimumInventory from '../../hooks/useMinimumInventory';
 
 function InventoryAlertThreshold() {
     const [minimumInventory, setMinimumInventory] = useMinimumInventory();
