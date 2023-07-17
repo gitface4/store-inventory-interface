@@ -7,7 +7,8 @@ Then, from the _store-inventory-interface_ directory, run the following command:
 `npm start`
 
 *Overview:*
-- The application is built with React
+- The application is an interface to monitor real-time sales from a shoe company
+- It is built with React
 - Real-time inventory data is streamed directly from the WebSocket server to the React application
 - To efficiently manage state and facilitate data sharing across multiple components, React Context API is used
 
