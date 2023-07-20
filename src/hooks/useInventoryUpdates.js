@@ -49,9 +49,8 @@ function useInventoryUpdates() {
                     console.log('DUPLICATE FOUND', inventoryUpdate)
                     // If found, replace the old item with the new one
                     return [
-                        ...prevUpdates.slice(0, index),
                         inventoryUpdate,
-                        ...prevUpdates.slice(index + 1),
+                        ...prevUpdates
                     ];
                 } else {
                     // If not found, just add the new update
